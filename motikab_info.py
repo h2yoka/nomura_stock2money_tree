@@ -11,7 +11,7 @@ email_money_t = os.environ["MONEY_TREE_EMAIL"]
 pass_money_t = os.environ["MONEY_TREE_PASS"]
 
 options = webdriver.ChromeOptions()
-# options.add_argument('-headless')
+options.add_argument('-headless')
 
 browser = webdriver.Chrome(options=options)
 
