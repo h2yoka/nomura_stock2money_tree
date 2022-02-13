@@ -1,13 +1,14 @@
-import selenium
-from selenium import webdriver
-from selenium.webdriver.common.by import By
+import selenium # type: ignore
+import os
+from selenium import webdriver # type: ignore
+from selenium.webdriver.common.by import By # type: ignore
 from time import sleep
 
-email_nomura = "#########@######"
-pass_nomura = "XXXXXXXXXXXXXXXXX"
+email_nomura = os.environ["NOMURA_STOCK_EMAIL"]
+pass_nomura = os.environ["NOMURA_STOCK_PASS"]
 
-email_money_t = "#########@######"
-pass_money_t = "XXXXXXXXXXXXXXXXX"
+email_money_t = os.environ["MONEY_TREE_EMAIL"]
+pass_money_t = os.environ["MONEY_TREE_PASS"]
 
 options = webdriver.ChromeOptions()
 # options.add_argument('-headless')
