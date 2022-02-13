@@ -67,17 +67,19 @@ mt_login_button.submit()
 #ログイン処理
 sleep(5.0)
 
-# 口座残高画面に移動する
-browser.get("https://app.getmoneytree.com/app/vault")
-sleep(5.0)
+# 口座残高エレメントをクリック
+zandaka_button_element = browser.find_element(by=By.XPATH, value='//*[@id="mt-webapp"]//*[contains(text(), "口座残高")]')
+zandaka_button_element.click()
+sleep(1.0)
 
-#指定した口座を左カラムから選択
-target_category_element = browser.find_element(by=By.XPATH, value='//*[@id="mt-webapp"]/section/mt-webapp-layout/div/div[2]/mt-accounts/div/mt-accounts-personal/div/mt-link-vault/div/mt-two-column-layout/div/div[1]/div[2]/left-column-body/mt-credentials/div/ul/li[4]')
-target_category_element.click()
+#口座リストから「その他」をクリック
+other_in_list_element= browser.find_element(by=By.XPATH, value='//*[@id="mt-webapp"]//*[contains(text(), "その他")]')
+other_in_list_element.click()
 sleep(0.5)
 
-target_bank_element = browser.find_element(by=By.XPATH, value='//*[@id="mt-webapp"]/section/mt-webapp-layout/div/div[2]/mt-accounts/div/mt-accounts-personal/div/mt-link-vault/div/mt-two-column-layout/div/div[1]/div[2]/left-column-body/mt-credentials/div/ul/li[4]/div[2]/ul/li[1]/div/mt-credential/div/mt-credential-template/div/div[3]/div[2]/mt-list-secondary/div/ul/li[2]')
-target_bank_element.click()
+
+target_category_element = browser.find_element(by=By.XPATH, value='//*[@id="mt-webapp"]//*[contains(text(), "持株会")]')
+target_category_element.click()
 sleep(0.5)
 
 bank_value_element = browser.find_element(by=By.CSS_SELECTOR, value=".balance.ng-binding")
