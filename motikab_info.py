@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import selenium # type: ignore
 import os
 from selenium import webdriver # type: ignore
