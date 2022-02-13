@@ -35,24 +35,21 @@ nomura_login = browser.find_element(by=By.CLASS_NAME, value="m_login_btn_01")
 nomura_login.submit()
 sleep(2.0)
 
-#時価評価額を取得する
+#Get stock value
 now_stock_element = browser.find_element(by=By.XPATH, value='//*[@id="container"]/div[2]/div[2]/dl/dd/span[2]')
 stock_value = (now_stock_element.text).replace(",","")
 stock_value = int(stock_value)
 print(stock_value)
 
 
-# #ログアウト
+# Log out from NOURA Stock service
 logout_element = browser.find_element(by=By.XPATH, value='//*[@id="m_self_reissue"]/ul/li[3]/a/span[2]')
 logout_element.click()
 
 # sleep(1.0)
 
-# money treeにログインする
-# url : https://myaccount.getmoneytree.com/login?locale=ja
+# Log in to Money Tree
 browser.get("https://app.getmoneytree.com/login")
-
-#URLが遷移する処理が入るので、次の処理はすぐに行わない
 sleep(2.0)
 
 mt_email_input = browser.find_element(by=By.NAME, value="guest[email]")
@@ -64,15 +61,15 @@ mt_pass_input.send_keys(pass_money_t)
 mt_login_button = browser.find_element(by=By.CLASS_NAME, value="login-form-button")
 mt_login_button.submit()
 
-#ログイン処理
+# Wait while process is completed
 sleep(5.0)
 
-# 口座残高エレメントをクリック
+# click "Kouza zandaka"
 zandaka_button_element = browser.find_element(by=By.XPATH, value='//*[@id="mt-webapp"]//*[contains(text(), "口座残高")]')
 zandaka_button_element.click()
 sleep(1.0)
 
-#口座リストから「その他」をクリック
+#Click "Sonota"
 other_in_list_element= browser.find_element(by=By.XPATH, value='//*[@id="mt-webapp"]//*[contains(text(), "その他")]')
 other_in_list_element.click()
 sleep(0.5)
