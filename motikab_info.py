@@ -34,7 +34,7 @@ nomura_login = browser.find_element(by=By.CLASS_NAME, value="m_login_btn_01")
 
 #login
 nomura_login.submit()
-sleep(10.0)
+sleep(5.0)
 
 # Skip Notice Page
 try:
@@ -71,7 +71,7 @@ mt_login_button = browser.find_element(by=By.CLASS_NAME, value="login-form-butto
 mt_login_button.submit()
 
 # Wait while process is completed
-sleep(15.0)
+sleep(10.0)
 
 # click "Kouza zandaka"
 zandaka_button_element = browser.find_element(by=By.XPATH, value='//*[@id="mt-webapp"]//*[contains(text(), "口座残高")]')
