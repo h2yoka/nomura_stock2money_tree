@@ -12,7 +12,7 @@ email_money_t = os.environ["MONEY_TREE_EMAIL"]
 pass_money_t = os.environ["MONEY_TREE_PASS"]
 
 options = webdriver.ChromeOptions()
-options.add_argument('-headless')
+#options.add_argument('-headless')
 
 browser = webdriver.Chrome(options=options)
 
@@ -34,7 +34,15 @@ nomura_login = browser.find_element(by=By.CLASS_NAME, value="m_login_btn_01")
 
 #login
 nomura_login.submit()
-sleep(2.0)
+sleep(5.0)
+
+# Skip Notice Page
+try:
+    browser.find_element(by=By.CSS_SELECTOR, value=".e_btn_active.e_btn_large").click()
+except:
+    pass
+
+sleep(5.0)
 
 #Get stock value
 now_stock_element = browser.find_element(by=By.XPATH, value='//*[@id="container"]/div[2]/div[2]/dl/dd/span[2]')
@@ -47,11 +55,11 @@ print(stock_value)
 logout_element = browser.find_element(by=By.XPATH, value='//*[@id="m_self_reissue"]/ul/li[3]/a/span[2]')
 logout_element.click()
 
-# sleep(1.0)
+sleep(3.0)
 
 # Log in to Money Tree
 browser.get("https://app.getmoneytree.com/login")
-sleep(2.0)
+sleep(5.0)
 
 mt_email_input = browser.find_element(by=By.NAME, value="guest[email]")
 mt_email_input.send_keys(email_money_t)
@@ -63,7 +71,7 @@ mt_login_button = browser.find_element(by=By.CLASS_NAME, value="login-form-butto
 mt_login_button.submit()
 
 # Wait while process is completed
-sleep(5.0)
+sleep(10.0)
 
 # click "Kouza zandaka"
 zandaka_button_element = browser.find_element(by=By.XPATH, value='//*[@id="mt-webapp"]//*[contains(text(), "口座残高")]')
@@ -73,12 +81,12 @@ sleep(1.0)
 #Click "Sonota"
 other_in_list_element= browser.find_element(by=By.XPATH, value='//*[@id="mt-webapp"]//*[contains(text(), "その他")]')
 other_in_list_element.click()
-sleep(0.5)
+sleep(1.0)
 
 
 target_category_element = browser.find_element(by=By.XPATH, value='//*[@id="mt-webapp"]//*[contains(text(), "持株会")]')
 target_category_element.click()
-sleep(0.5)
+sleep(1.0)
 
 bank_value_element = browser.find_element(by=By.CSS_SELECTOR, value=".balance.ng-binding")
 bank_value_element.click()
